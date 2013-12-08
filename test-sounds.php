@@ -7,8 +7,7 @@
 include('Sounds.php');
 include('config.php');
 
-$push = new \Darkflib\Pushover\Sounds();
-$push->setToken(PUSHOVER_TOKEN);
+$push = new \Darkflib\Pushover\Sounds(PUSHOVER_TOKEN);
 
 $push->setDebug(true);
 

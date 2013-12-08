@@ -43,7 +43,7 @@ class Validate
 	/**
 	 * Default constructor
 	 */
-    public function __construct ($token = null, $user = null, $message = null) {
+    public function __construct ($token = null, $user = null) {
 	$this->_token = (string)$token;
         $this->_user = (string)$user;
     }

@@ -32,6 +32,13 @@ class Sounds
 	 * @var bool
 	 */
 	private $_debug = false;
+
+        /**
+         * Default constructor
+         */
+    public function __construct ($token = null) {
+        $this->_token = (string)$token;
+    }
 	
 	/**
 	 * Set API token

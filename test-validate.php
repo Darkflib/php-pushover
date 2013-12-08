@@ -7,9 +7,7 @@
 include('Validate.php');
 include('config.php');
 
-$push = new \Darkflib\Pushover\Validate();
-$push->setToken(PUSHOVER_TOKEN);
-$push->setUser(PUSHOVER_USER);
+$push = new \Darkflib\Pushover\Validate(PUSHOVER_TOKEN, PUSHOVER_USER);
 
 $push->setDebug(true);
 
