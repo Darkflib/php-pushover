@@ -4,18 +4,20 @@
  *
  * PHP service wrapper for the pushover.net API: https://pushover.net/api
  * 
- * @author Chris Schalenborgh <chris.s@kryap.com>
+ * @author Mike Preston <mike@technomonk.com> based on code by Chris Schalenborgh <chris.s@kryap.com>
  * @version 0.2
  * @package php-pushover	
  * @example test.php
  * @link https://pushover.net/api
  * @license BSD License
  */ 
- 
-class Pushover
+
+namespace DarkFlib\Pushover; 
+
+class Message
 {
 	// api url
-	const API_URL = 'https://api.pushover.net/1/messages.xml';
+	const API_URL = 'https://api.pushover.net/1/messages.json';
 	
 	/**
 	 * Application API token
@@ -111,9 +113,11 @@ class Pushover
 	/**
 	 * Default constructor
 	 */
-	public function __construct () {		
+    public function __construct ($token = null, $user = null, $message = null) {
+	$this->_token = (string)$token;
+        $this->_user = (string)$user;
+	$this->_message = (string)$message;
     }
-
 	/**
 	 * Set API token
 	 * 
@@ -415,13 +419,13 @@ class Pushover
 			  	'url_title' => $this->getUrlTitle()
 			));	
 			$response = curl_exec($c);
-			$xml = simplexml_load_string($response);
+			$output = json_decode($response);
 			
 			if($this->getDebug()) {
-				return array('output' => $xml, 'input' => $this);
+				return array('output' => $output, 'input' => $this);
 			}
 			else {
-				return ($xml->status == 1) ? true : false;
+				return ($output->status == 1) ? true : false;
 			}
 		}
 	}
