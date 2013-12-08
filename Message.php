@@ -419,7 +419,7 @@ class Message
 			  	'url_title' => $this->getUrlTitle()
 			));	
 			$response = curl_exec($c);
-			$output = json_decode($response);
+			$output = json_decode($response,TRUE);
 			
 			if($this->getDebug()) {
 				return array('output' => $output, 'input' => $this);

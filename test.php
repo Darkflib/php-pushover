@@ -5,10 +5,11 @@
  */ 
  
 include('Message.php');
+include('config.php');
 
 $push = new \Darkflib\Pushover\Message();
-$push->setToken('');
-$push->setUser('');
+$push->setToken(PUSHOVER_TOKEN);
+$push->setUser(PUSHOVER_USER);
 
 $push->setTitle('Hey Mike');
 $push->setMessage('Hello world! ' .time());
